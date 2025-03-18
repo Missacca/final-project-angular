@@ -1,0 +1,7 @@
+{
+  "name": "AR Gutar",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
