@@ -40,7 +40,7 @@ export class Tab5Page {
     }else {
       console.log('Registering with', this.registerData);
     }
-    
+
   }
 
 }
