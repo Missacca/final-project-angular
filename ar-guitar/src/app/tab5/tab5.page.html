@@ -16,7 +16,7 @@
       <ion-card-title>Login</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <form (ngSubmit)="onLogin()">
+      <form (ngSubmit)="onLogin(loginData.email,loginData.password)">
         <ion-item>
           <ion-label position="floating">Email</ion-label>
           <ion-input type="email" [(ngModel)]="loginData.email" name="email" required></ion-input>

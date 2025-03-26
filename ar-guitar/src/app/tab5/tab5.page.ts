@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-
+import {LoginToServerService} from "../login-to-server.service";
 @Component({
   selector: 'app-tab5',
   templateUrl: 'tab5.page.html',
@@ -7,8 +7,7 @@ import { Component} from '@angular/core';
   standalone: false,
 })
 export class Tab5Page {
-
-  constructor() { }
+  constructor(private loginToServerService: LoginToServerService  ) { }
   showLogin = true;
   loginData = {
     email: '',
@@ -29,9 +28,8 @@ export class Tab5Page {
     this.showLogin = false;
   }
 
-  onLogin() {
-    console.log('Logging in with', this.loginData);
-    // Handle the login logic here
+  onLogin(email: string, password: string) {
+    this.loginToServerService.onLogin(email,password);
   }
 
   onRegister() {
@@ -42,5 +40,4 @@ export class Tab5Page {
     }
 
   }
-
 }

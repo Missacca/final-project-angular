@@ -28,15 +28,19 @@ const routes: Routes = [
         loadChildren: () => import('../tab5/tab5.module').then(m => m.Tab5PageModule)
       },
       {
+        path: 'post/:postId',
+        loadChildren: () => import('../comment/comment.module').then( m => m.CommentPageModule)
+      },
+      {
         path: '',
-        redirectTo: '/tabs/tab5',
+        redirectTo: '/tabs/tab1',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab5',
+    redirectTo: '/tabs/tab1',
     pathMatch: 'full'
   }
 ];
