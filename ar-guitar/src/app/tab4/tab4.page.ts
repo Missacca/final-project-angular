@@ -9,36 +9,36 @@ import {LoginToServerService} from "../login-to-server.service";
   standalone: false,
 })
 export class Tab4Page  {
-
   newPost: string = '';
   posts: any[] = [];
-  newComment: string = '';
-  comments: any[] = [];
   postId: string = '';
   constructor(private authService: CommitServiceService, public login: LoginToServerService,private route: ActivatedRoute) {
     this.postId = this.route.snapshot.paramMap.get('postId') || '';
   }
   ngOnInit() {
-    this.authService.getComments(this.postId).subscribe((data: any) => {
-      this.comments = data;
-    });
-
     this.authService.getPosts().subscribe((data: any) => {
       this.posts = data;
     });
   }
 
-  submitPost() {
-    this.authService.createPost(this.newPost).subscribe(() => {
-      this.newPost = ''; // 清空输入框
-      this.ngOnInit(); // 刷新帖子列表
+  likeComment(commentId: string) {
+    this.authService.likeComment(commentId).subscribe(() => {
+      this.ngOnInit();
     });
   }
 
-  submitComment() {
-    this.authService.addComment(this.newComment, this.postId).subscribe(() => {
-      this.newComment = '';
-      this.ngOnInit(); // 刷新评论列表
+  favoriteComment(commentId: string) {
+    this.authService.favoriteComment(commentId).subscribe(() => {
+      console.log(`Favorite comments: ${commentId}`);
     });
   }
+
+  submitPost() {
+    this.authService.createPost(this.newPost).subscribe(() => {
+      this.newPost = ''; // Clear the input box
+      this.ngOnInit(); // Refresh post list
+    });
+  }
+
+
 }

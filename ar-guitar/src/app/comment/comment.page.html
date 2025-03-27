@@ -10,4 +10,32 @@
       <ion-title size="large">Comment</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-button [routerLink]="['/tab4']">Back</ion-button>
+  <ion-card *ngFor="let comment of comments">
+    <ion-card-header>{{ comment.content }}</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let comment of comment.comments">
+          {{ comment.content }} ({{ comment.likes }} praise)
+          <ion-button slot="end" (click)="likeComment(comment.id)">Like</ion-button>
+          <ion-button slot="end" (click)="favoriteComment(comment.id)">collect</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sponsored Ads  -->
+  <ion-card class="advertisement">
+    <ion-card-header>Sponsored Ads </ion-card-header>
+    <ion-card-content>
+      Here is the ad content.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Input box, only visible to logged in users -->
+  <ion-item *ngIf="login.isLoggedIn()">
+    <ion-textarea [(ngModel)]="newComment" placeholder="Say something..."></ion-textarea>
+  </ion-item>
+  <ion-button *ngIf="login.isLoggedIn()" (click)="submitComment()">release</ion-button>
+
 </ion-content>

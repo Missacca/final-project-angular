@@ -11,30 +11,27 @@
     </ion-toolbar>
   </ion-header>
   <ion-card *ngFor="let post of posts">
-    <ion-card-header>{{ post.content }}</ion-card-header>
+    <ion-card-header>{{ post.content }} ({{ post.likes }} Like)</ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let comment of post.comments">
-          {{ comment.content }} ({{ comment.likes }} 赞)
-          <ion-button slot="end" (click)="likeComment(comment.id)">点赞</ion-button>
-          <ion-button [routerLink]="['/post', post.id]">查看评论</ion-button>
-          <ion-button slot="end" (click)="favoriteComment(comment.id)">收藏</ion-button>
-        </ion-item>
+          <ion-button slot="end" (click)="likeComment(post.id)">Like</ion-button>
+          <ion-button [routerLink]="['/post', post.id]">View comments</ion-button>
+          <ion-button slot="end" (click)="favoriteComment(post.id)">Collect</ion-button>
       </ion-list>
     </ion-card-content>
   </ion-card>
 
-  <!-- 赞助广告 -->
+  <!-- Sponsored Ads  -->
   <ion-card class="advertisement">
-    <ion-card-header>广告</ion-card-header>
+    <ion-card-header>Sponsored Ads </ion-card-header>
     <ion-card-content>
-      这里是广告内容。
+      Here is the ad content.
     </ion-card-content>
   </ion-card>
 
-  <!-- 输入框，仅对已登录用户显示 -->
+  <!-- Input box, only visible to logged in users -->
   <ion-item *ngIf="login.isLoggedIn()">
-    <ion-textarea [(ngModel)]="newPost" placeholder="说点什么..."></ion-textarea>
+    <ion-textarea [(ngModel)]="newPost" placeholder="Say something..."></ion-textarea>
   </ion-item>
-  <ion-button *ngIf="login.isLoggedIn()" (click)="submitPost()">发布</ion-button>
+  <ion-button *ngIf="login.isLoggedIn()" (click)="submitPost()">release</ion-button>
 </ion-content>
