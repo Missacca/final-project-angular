@@ -17,7 +17,7 @@ export class Tab5Page {
     name: '',
     email: '',
     password: '',
-    repassword: '',
+    rePassword: '',
   };
 
   switchToLogin() {
@@ -33,11 +33,11 @@ export class Tab5Page {
   }
 
   onRegister() {
-    if(this.registerData.repassword != this.registerData.password) {
-      alert("The password is entered inconsistently");
+    if(this.registerData.rePassword != this.registerData.password) {
+        alert("The password is entered inconsistently");
     }else {
       console.log('Registering with', this.registerData);
+      this.loginToServerService.onRegister(this.registerData.name, this.registerData.email, this.registerData.password);
     }
-
   }
 }

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Shop
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,24 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Shop</ion-title>
     </ion-toolbar>
   </ion-header>
+  <!-- Sponsored Ads  -->
+  <ion-card class="advertisement">
+    <ion-card-header>Sponsored Ads </ion-card-header>
+    <ion-card-content>
+      Here is the ad content.
+    </ion-card-content>
+  </ion-card>
+  <!-- Song List -->
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-content color="light">
+    <ion-list [inset]="true" *ngFor="let theme of this.SongName">
+      <ion-item>
+        <ion-label> {{ theme }} </ion-label>
+        <ion-button color="success" (click)="openView(theme.length)">View Details</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-content>

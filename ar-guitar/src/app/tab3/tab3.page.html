@@ -7,23 +7,29 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <!-- Sponsored Ads  -->
+  <ion-card class="advertisement">
+    <ion-card-header>Sponsored Ads </ion-card-header>
+    <ion-card-content>
+      Here is the ad content.
+    </ion-card-content>
+  </ion-card>
   <ion-item>
-    <ion-label position="stacked">请输入问题</ion-label>
-    <ion-input [(ngModel)]="inputText" placeholder="请输入内容..."></ion-input>
+    <ion-label position="stacked">Input Your question</ion-label>
+    <ion-input [(ngModel)]="inputText" placeholder="Please input content"></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="getAIResponse()">询问AI</ion-button>
+  <ion-button expand="full" (click)="getAIResponse()">Ask AI</ion-button>
 
   <ion-card *ngIf="aiResponse">
     <ion-card-header>
-      <ion-card-title>AI的回答</ion-card-title>
+      <ion-card-title>AI Response</ion-card-title>
     </ion-card-header>
     <ion-list>
       <!-- 显示所有历史对话 -->
       <ion-item *ngFor="let message of messages">
         <ion-label>
-          <strong>用户:</strong> {{ message.user }}<br>
+          <strong>User:</strong> {{ message.user }}<br>
           <strong>AI:</strong> {{ message.ai }}
         </ion-label>
       </ion-item>

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>login in</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -58,10 +58,10 @@
 
         <ion-item>
           <ion-label position="floating">CheckPassword</ion-label>
-          <ion-input type="password" [(ngModel)]="registerData.repassword" name="password" required></ion-input>
+          <ion-input type="password" [(ngModel)]="registerData.rePassword" name="password" required></ion-input>
         </ion-item>
 
-        <ion-button expand="full" type="submit" [disabled]="!registerData.name || !registerData.email || !registerData.password || !registerData.repassword">
+        <ion-button expand="full" type="submit" [disabled]="!registerData.name || !registerData.email || !registerData.password || !registerData.rePassword">
           Register
         </ion-button>
       </form>
