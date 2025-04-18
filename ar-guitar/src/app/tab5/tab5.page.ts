@@ -30,6 +30,7 @@ export class Tab5Page {
 
   onLogin(email: string, password: string) {
     this.loginToServerService.onLogin(email,password);
+    alert("Login successfull");
   }
 
   onRegister() {
