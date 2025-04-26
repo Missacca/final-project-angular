@@ -12,6 +12,8 @@ export class Tab4Page  {
   newPost: string = '';
   posts: any[] = [];
   postId: string = '';
+  isCollect=false;
+  isFavorite=false;
   constructor(private authService: CommitServiceService, public login: LoginToServerService,private route: ActivatedRoute) {
     this.postId = this.route.snapshot.paramMap.get('postId') || '';
   }
@@ -23,13 +25,14 @@ export class Tab4Page  {
 
   likeComment(commentId: string) {
     this.authService.likeComment(commentId).subscribe(() => {
+      this.isCollect=true;
       this.ngOnInit();
     });
   }
 
   favoriteComment(commentId: string) {
     this.authService.favoriteComment(commentId).subscribe(() => {
-      console.log(`Favorite comments: ${commentId}`);
+      this.isFavorite=false;
     });
   }
 

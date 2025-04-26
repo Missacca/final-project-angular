@@ -8,7 +8,7 @@ export class LoginToServerService {
 
   constructor(private http: HttpClient) {}
 
-  url: string  = "http://192.168.31.210:8800";
+  url: string  = "http://frp-aim.com:56647";
   onLogin(email:string,password:string) {
     return this.http.post(this.url + '/api/login', { email, password })
       .subscribe((response: any) => {

@@ -10,22 +10,22 @@
       <ion-title size="large">Share You Ideas</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-card *ngFor="let post of posts">
-    <ion-card-header>{{ post.content }} ({{ post.likes }} Like)</ion-card-header>
-    <ion-card-content>
-      <ion-list>
-          <ion-button slot="end" (click)="likeComment(post.id)">Like</ion-button>
-          <ion-button [routerLink]="['/post', post.id]">View comments</ion-button>
-          <ion-button slot="end" (click)="favoriteComment(post.id)">Collect</ion-button>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-
   <!-- Sponsored Ads  -->
   <ion-card class="advertisement">
     <ion-card-header>Sponsored Ads </ion-card-header>
     <ion-card-content>
       Here is the ad content.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let post of posts">
+    <ion-card-header>{{ post.content }} ({{ post.likes }} Like)</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+          <ion-button slot="end" (click)="likeComment(post.id)" [disabled]=isFavorite>Like</ion-button>
+          <ion-button [routerLink]="['/post', post.id]">View comments</ion-button>
+          <ion-button slot="end" (click)="favoriteComment(post.id)" [disabled]=isCollect>Collect</ion-button>
+      </ion-list>
     </ion-card-content>
   </ion-card>
 
