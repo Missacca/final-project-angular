@@ -37,7 +37,7 @@ export class CommitServiceService {
   likeComment(commentId: string) {
     return this.http.post(this.url + `/api/comments/${commentId}/like`, {}, { headers: this.getHeaders() });
   }
-
+  //记录下来用
   favoriteComment(commentId: string) {
     return this.http.post(this.url + `/api/comments/${commentId}/favorite`, {}, { headers: this.getHeaders() });
   }

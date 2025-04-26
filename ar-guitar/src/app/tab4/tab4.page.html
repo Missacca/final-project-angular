@@ -19,12 +19,19 @@
   </ion-card>
 
   <ion-card *ngFor="let post of posts">
-    <ion-card-header>{{ post.content }} ({{ post.likes }} Like)</ion-card-header>
+    <ion-card-header>{{post.username}}:</ion-card-header>
     <ion-card-content>
+      {{ post.content }}
       <ion-list>
-          <ion-button slot="end" (click)="likeComment(post.id)" [disabled]=isFavorite>Like</ion-button>
-          <ion-button [routerLink]="['/post', post.id]">View comments</ion-button>
-          <ion-button slot="end" (click)="favoriteComment(post.id)" [disabled]=isCollect>Collect</ion-button>
+        <ion-button size="small" slot="end" (click)="likeComment(post.id)" [disabled]="isFavorite">
+          <ion-icon [name]="isFavorite ? 'heart-circle-outline' : 'heart'"></ion-icon>
+          <ion-label>{{ likeNumber }}</ion-label>
+        </ion-button>
+          <ion-button size="small"  (click)="goToDetailPage()" >
+            <ion-icon [name]="'ellipsis-horizontal-circle'">View comments</ion-icon>
+          </ion-button>
+          <ion-button size="small" slot="end" (click)="favoriteComment(post.id)" [disabled]=isCollect>
+            <ion-icon [name]="isCollect? 'star-outline': 'star'"> Collect</ion-icon></ion-button>
       </ion-list>
     </ion-card-content>
   </ion-card>

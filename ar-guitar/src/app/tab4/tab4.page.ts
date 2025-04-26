@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { CommitServiceService} from "../commit-service.service";
 import {LoginToServerService} from "../login-to-server.service";
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-tab4',
   templateUrl: 'tab4.page.html',
@@ -14,13 +15,18 @@ export class Tab4Page  {
   postId: string = '';
   isCollect=false;
   isFavorite=false;
-  constructor(private authService: CommitServiceService, public login: LoginToServerService,private route: ActivatedRoute) {
+  likeNumber=0;
+  constructor(private authService: CommitServiceService, public login: LoginToServerService,private route: ActivatedRoute,private navCtrl: NavController) {
     this.postId = this.route.snapshot.paramMap.get('postId') || '';
   }
   ngOnInit() {
     this.authService.getPosts().subscribe((data: any) => {
       this.posts = data;
     });
+  }
+
+  goToDetailPage() {
+    this.navCtrl.navigateForward(['/post'],{  }); // 跳转到 detail 页面
   }
 
   likeComment(commentId: string) {
@@ -32,7 +38,7 @@ export class Tab4Page  {
 
   favoriteComment(commentId: string) {
     this.authService.favoriteComment(commentId).subscribe(() => {
-      this.isFavorite=false;
+      this.isFavorite=true;
     });
   }
 
