@@ -23,15 +23,15 @@
     <ion-card-content>
       {{ post.content }}
       <ion-list>
-        <ion-button size="small" slot="end" (click)="likeComment(post.id)" [disabled]="isFavorite">
-          <ion-icon [name]="isFavorite ? 'heart-circle-outline' : 'heart'"></ion-icon>
+        <ion-button size="small" slot="end" (click)="likePost(post.id)" [disabled]="islike">
+          <ion-icon [name]="islike ? 'heart-circle-outline' : 'heart'"></ion-icon>
           <ion-label>{{ likeNumber }}</ion-label>
         </ion-button>
-          <ion-button size="small"  (click)="goToDetailPage()" >
+          <ion-button size="small"  (click)="goToDetailPage(post.id,post.content,post.username)" >
             <ion-icon [name]="'ellipsis-horizontal-circle'">View comments</ion-icon>
           </ion-button>
-          <ion-button size="small" slot="end" (click)="favoriteComment(post.id)" [disabled]=isCollect>
-            <ion-icon [name]="isCollect? 'star-outline': 'star'"> Collect</ion-icon></ion-button>
+          <ion-button size="small" slot="end" (click)="favoritePost(post.id)" [disabled]="isFavorite">
+            <ion-icon [name]="isFavorite? 'star':'star-outline' "> Collect</ion-icon></ion-button>
       </ion-list>
     </ion-card-content>
   </ion-card>

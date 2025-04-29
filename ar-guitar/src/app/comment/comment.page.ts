@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CommitServiceService} from "../commit-service.service";
 import {LoginToServerService} from "../login-to-server.service";
+import {firstValueFrom} from "rxjs";
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.page.html',
@@ -9,36 +10,62 @@ import {LoginToServerService} from "../login-to-server.service";
   standalone: false
 })
 export class CommentPage implements OnInit {
-  postId: string = '';
   newComment: string = '';
   comments: any[] = [];
-  constructor(private authService: CommitServiceService, public login: LoginToServerService,private route: ActivatedRoute) {
-    this.postId = this.route.snapshot.paramMap.get('postId') || '';
-  }
+  receivedPostId='';
+  receivedPostContent = '';
+  receivedPostUsername='';
+  ilike=false;
+  iFavorite=false;
 
+  constructor(private authService: CommitServiceService, public login: LoginToServerService,private route: ActivatedRoute, private router: Router) {}
   ngOnInit() {
-    this.authService.getComments(this.postId).subscribe((data: any) => {
-      this.comments = data;
+      this.route.queryParams.subscribe(params => {
+      const currentNavigation = this.router.getCurrentNavigation();
+
+      if (currentNavigation && currentNavigation.extras && currentNavigation.extras.state) {
+        this.receivedPostId = currentNavigation.extras.state['id'];
+        this.receivedPostContent = currentNavigation.extras.state['content'];
+        this.receivedPostUsername = currentNavigation.extras.state['username'];
+        console.log('Detail 页接收到的 postId:', this.receivedPostId, this.receivedPostContent, this.receivedPostUsername);
+        this.loadComments(this.receivedPostId);
+      } else {
+        console.log('Detail 页没有接收到 id');
+      }
     });
   }
 
-  submitComment() {
-    this.authService.addComment(this.newComment, this.postId).subscribe(() => {
-      this.newComment = '';
-      this.ngOnInit(); // 刷新评论列表
+  loadComments(postId: any) {
+    this.authService.getComments(postId).subscribe((data: any) => {
+      this.comments = data;
+      console.log(this.comments);
     });
+  }
+
+  async submitComment() {
+    try {
+      await firstValueFrom(this.authService.addComment(this.newComment, this.receivedPostId));
+      this.newComment = '';
+      this.loadComments(this.receivedPostId);
+    } catch (error) {
+      console.error('提交评论失败:', error);
+    }
   }
 
   likeComment(commentId: string) {
     this.authService.likeComment(commentId).subscribe(() => {
-      this.ngOnInit();
+      this.ilike=true;
     });
+    console.log("Favorite comment: " + commentId);
+    this.loadComments(this.receivedPostId);
   }
 
   favoriteComment(commentId: string) {
-    this.authService.favoriteComment(commentId).subscribe(() => {
+    this.authService.favoriteComment(this.receivedPostId).subscribe(() => {
       console.log(`Favorite comments: ${commentId}`);
     });
+    console.log("Favorite comment: " + commentId);
+    this.loadComments(this.receivedPostId);
   }
 
 }
