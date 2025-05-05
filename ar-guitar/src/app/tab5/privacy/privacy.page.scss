@@ -1,0 +1,88 @@
+ion-content {
+  --background: #f5f7fa;
+  font-family: 'Segoe UI', sans-serif;
+  color: #2e3a59;
+}
+
+ion-card {
+  margin: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
+  background: #ffffff;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
+ion-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1c2d57;
+}
+
+ion-card-subtitle {
+  font-size: 0.95rem;
+  color: #6c7a99;
+}
+
+ion-card-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #3d4766;
+
+  strong {
+    color: #264d99;
+  }
+
+  em {
+    color: #5b6a90;
+    font-style: italic;
+  }
+}
+
+
+ion-toolbar {
+  --background: #264d99;
+  --color: #ffffff;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+ion-title {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --background: #1e1f23;
+    color: #e5e7eb;
+  }
+
+  ion-card {
+    background: #2a2b30;
+    box-shadow: none;
+    border: 1px solid #3a3b40;
+  }
+
+  ion-card-title,
+  ion-card-subtitle,
+  ion-card-content p {
+    color: #e0e3f0;
+  }
+
+  ion-card-content p strong {
+    color: #84a9ff;
+  }
+
+  ion-card-content p em {
+    color: #a0acc8;
+  }
+
+  ion-toolbar {
+    --background: #1b2a4a;
+    --color: #ffffff;
+  }
+}

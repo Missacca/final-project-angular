@@ -38,7 +38,6 @@ export class CommentPage implements OnInit {
   loadComments(postId: any) {
     this.authService.getComments(postId).subscribe((data: any) => {
       this.comments = data;
-      console.log(this.comments);
     });
   }
 

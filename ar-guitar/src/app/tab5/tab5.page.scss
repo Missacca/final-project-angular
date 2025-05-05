@@ -1,0 +1,46 @@
+.welcome-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  ion-avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+
+.menu-card {
+  text-align: center;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: #fff;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+  }
+
+  .menu-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  .menu-label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

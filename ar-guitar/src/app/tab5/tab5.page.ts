@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import {LoginToServerService} from "../login-to-server.service";
+import {NavController} from "@ionic/angular";
 @Component({
   selector: 'app-tab5',
   templateUrl: 'tab5.page.html',
@@ -7,38 +8,19 @@ import {LoginToServerService} from "../login-to-server.service";
   standalone: false,
 })
 export class Tab5Page {
-  constructor(private loginToServerService: LoginToServerService  ) { }
-  showLogin = true;
-  loginData = {
-    email: '',
-    password: '',
-  };
-  registerData = {
-    name: '',
-    email: '',
-    password: '',
-    rePassword: '',
-  };
+  constructor(private navCtrl: NavController) {}
+  menuItems = [
+    { label: '我的收藏', path: 'MyFavorite', icon: 'heart-outline' },
+    { label: '我的点赞', path: 'MyStar', icon: 'star-outline' },
+    { label: '隐私政策', path: 'privacy', icon: 'lock-closed-outline' },
+    { label: '联系我们', path: 'ContractUs', icon: 'mail-outline' },
+    { label: '修改密码', path: 'change-password', icon: 'key-outline' },
+    { label: '登录', path: 'login', icon: 'log-in-outline' }
+  ];
 
-  switchToLogin() {
-    this.showLogin = true;
+  navigateTo(path: string) {
+    this.navCtrl.navigateForward(`${path}`);
   }
 
-  switchToRegister() {
-    this.showLogin = false;
-  }
 
-  onLogin(email: string, password: string) {
-    this.loginToServerService.onLogin(email,password);
-    alert("Login successfull");
-  }
-
-  onRegister() {
-    if(this.registerData.rePassword != this.registerData.password) {
-        alert("The password is entered inconsistently");
-    }else {
-      console.log('Registering with', this.registerData);
-      this.loginToServerService.onRegister(this.registerData.name, this.registerData.email, this.registerData.password);
-    }
-  }
 }

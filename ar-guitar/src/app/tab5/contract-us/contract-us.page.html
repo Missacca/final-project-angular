@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+
+    <ion-title>Welcome</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateTo('/tabs/tab5')">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Good Morning!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Thank you for choosing us.<br>
+        We will give you the best answer.<br>
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Our Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li>Safety for your Data</li>
+        <li>Free for use</li>
+        <li>App spontaneously progress</li>
+        <li>Good UI and UX experience</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Our Team Members</ion-card-title>
+    </ion-card-header>
+    <ion-button id="open-modal" expand="block">Open View Teammate</ion-button>
+    <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Team31</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="modal.dismiss()">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            <ion-item>
+              <ion-label>
+                <h2>Mr. Yunlin Li</h2>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <h2>Mr. Kun Ye</h2>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <h2>Mr. Zihan Wei</h2>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <h2>Mr. Zhenrui Tian</h2>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p style="text-align:center; margin: 0 auto;">
+      ©Copyright Team 31 (2025) | All Rights Reserved
+    </p>
+  </ion-toolbar>
+</ion-footer>
