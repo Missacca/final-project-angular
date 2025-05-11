@@ -37,4 +37,19 @@ export class LoginToServerService {
   logout(): void {
     localStorage.removeItem('token');
   }
+
+  getCurrentUser(): Observable<any> {
+    return this.http.get(this.url+ '/api/thisUserInfo');
+  }
+
+  updateUserInfo(username: string, email: string, password: string) {
+    return this.http.put(this.url + '/api/updateUserInfo', { username, email, password })
+    .subscribe((response: any) => {
+      alert("updated successfully"+ username);
+    },
+      (error: any) => {
+        console.error('update Failed');
+        alert('update Failed');
+      })
+  }
 }

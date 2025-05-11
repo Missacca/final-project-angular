@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>MyFavorite</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateTo('/tabs/tab5')">Back</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +13,18 @@
       <ion-title size="large">MyFavorite</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <!-- Sponsored Ads  -->
+  <ion-card class="advertisement">
+    <ion-card-header>Sponsored Ads </ion-card-header>
+    <ion-card-content>
+      Here is the ad content.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let comment of posts">
+      {{ comment.content }}
+    </ion-item>
+  </ion-list>
 </ion-content>

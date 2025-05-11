@@ -22,28 +22,49 @@ export class LoginPage {
     rePassword: '',
   };
 
+  validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   switchToLogin() {
     this.showLogin = true;
   }
+
 
   switchToRegister() {
     this.showLogin = false;
   }
 
   onLogin(email: string, password: string) {
+    if (!this.validateEmail(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters.");
+      return;
+    }
 
-    this.loginToServerService.onLogin(email,password);
-    alert("Login successfull");
-    this.navCtrl.navigateForward('/tabs/tab5'); // 跳转到 detail 页面
+    this.loginToServerService.onLogin(email, password);
+    alert("Login successful");
+    this.navCtrl.navigateForward('/tabs/tab5');
   }
 
   onRegister() {
-    if(this.registerData.rePassword != this.registerData.password) {
+    if (!this.validateEmail(this.registerData.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    } else if(this.registerData.rePassword != this.registerData.password) {
       alert("The password is entered inconsistently");
-    }else {
+      return;
+    }
+    if (this.registerData.password.length < 6) {
+      alert("Password must be at least 6 characters.");
+      return;
+    }
       console.log('Registering with', this.registerData);
       this.loginToServerService.onRegister(this.registerData.name, this.registerData.email, this.registerData.password);
       this.switchToLogin();
-    }
   }
 }

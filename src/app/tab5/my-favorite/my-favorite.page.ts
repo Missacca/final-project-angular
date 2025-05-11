@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CommitServiceService} from "../../commit-service.service";
+import {NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-my-favorite',
@@ -7,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class MyFavoritePage implements OnInit {
+  posts: any[] = [];
+  constructor(private server: CommitServiceService, private navCtrl: NavController) { }
 
-  constructor() { }
+  navigateTo(path: string) {
+    this.navCtrl.navigateForward(`${path}`);
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.server.getAllFavorites().subscribe((data: any) => {
+        this.posts = data;
+      }
+    )
   }
 
 }

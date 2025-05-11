@@ -25,7 +25,7 @@
       <ion-list>
         <ion-button size="small" slot="end" (click)="likePost(post.id)" [disabled]="islike">
           <ion-icon [name]="islike ? 'heart-circle-outline' : 'heart'"></ion-icon>
-          <ion-label>{{ likeNumber }}</ion-label>
+          <ion-label>{{ post.likeCount }}</ion-label>
         </ion-button>
           <ion-button size="small"  (click)="goToDetailPage(post.id,post.content,post.username)" >
             <ion-icon [name]="'ellipsis-horizontal-circle'">View comments</ion-icon>

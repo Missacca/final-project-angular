@@ -10,12 +10,12 @@ import {NavController} from "@ionic/angular";
 export class Tab5Page {
   constructor(private navCtrl: NavController) {}
   menuItems = [
-    { label: '我的收藏', path: 'MyFavorite', icon: 'heart-outline' },
-    { label: '我的点赞', path: 'MyStar', icon: 'star-outline' },
-    { label: '隐私政策', path: 'privacy', icon: 'lock-closed-outline' },
-    { label: '联系我们', path: 'ContractUs', icon: 'mail-outline' },
-    { label: '修改密码', path: 'change-password', icon: 'key-outline' },
-    { label: '登录', path: 'login', icon: 'log-in-outline' }
+    { label: 'My Favorite', path: 'MyFavorite', icon: 'heart-outline' },
+    { label: 'My Star', path: 'MyStar', icon: 'star-outline' },
+    { label: 'Privacy', path: 'privacy', icon: 'lock-closed-outline' },
+    { label: 'Contract Us', path: 'ContractUs', icon: 'mail-outline' },
+    { label: 'change password', path: 'change-password', icon: 'key-outline' },
+    { label: 'change account', path: 'login', icon: 'log-in-outline' }
   ];
 
   navigateTo(path: string) {

@@ -14,12 +14,20 @@ export class Tab4Page  {
   posts: any[] = [];
   islike=false;
   isFavorite=false;
-  likeNumber=0;
   constructor(private authService: CommitServiceService, public login: LoginToServerService,private navCtrl: NavController) {}
 
   ngOnInit() {
     this.authService.getPosts().subscribe((data: any) => {
       this.posts = data;
+
+      // 对每条评论请求点赞数量
+      this.posts.forEach((post, index) => {
+        this.authService.Alllikenumber(post.id).subscribe((likeData: any) => {
+          // 返回格式是一个对象数组：[{ likeCount: 5 }]
+          const count = likeData[0]?.likeCount || 0;
+          this.posts[index].likeCount = count;
+        });
+      });
     });
   }
 
@@ -37,8 +45,13 @@ export class Tab4Page  {
   likePost(commentId: string) {
     this.authService.likePost(commentId).subscribe(() => {
       this.islike=true;
-      this.likeNumber += 1;
-      this.ngOnInit();
+      this.authService.Alllikenumber(commentId).subscribe((likeData: any) => {
+        const updatedCount = likeData[0]?.likeCount || 0;
+        const post = this.posts.find(p => p.id === commentId);
+        if (post) {
+          post.likeCount = updatedCount;
+        }
+      });
     });
   }
 

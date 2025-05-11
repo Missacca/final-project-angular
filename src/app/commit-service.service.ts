@@ -56,4 +56,23 @@ export class CommitServiceService {
   favoriteComment(commentId: string) {
     return this.http.post(this.url + `/api/comments/${commentId}/favorite`, {}, { headers: this.getHeaders(), responseType: 'text' as 'json'});
   }
+  //
+  Alllikenumber(postId: string){
+    return this.http.get(this.url + `/api/getCommentLikes/${postId}`);
+  }
+
+  getAllStar() {
+    const token = localStorage.getItem('token'); // 或者你存储的位置
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get(this.url+`/api/getAllStar`, { headers });
+  }
+  getAllFavorites() {
+    const token = localStorage.getItem('token'); // 或者你存储的位置
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get(this.url+`/api/getAllFavorites`, { headers });
+  }
 }

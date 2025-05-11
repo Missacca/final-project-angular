@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NavController} from "@ionic/angular";
+import {CommitServiceService} from "../../commit-service.service";
 
 @Component({
   selector: 'app-my-star',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class MyStarPage implements OnInit {
+  posts: any[] = [];
+  constructor(private server: CommitServiceService, private navCtrl: NavController) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  navigateTo(path: string) {
+    this.navCtrl.navigateForward(`${path}`);
   }
 
+  ngOnInit(): void {
+    this.server.getAllStar().subscribe((data: any) => {
+        this.posts = data;
+      }
+    )
+  }
 }
