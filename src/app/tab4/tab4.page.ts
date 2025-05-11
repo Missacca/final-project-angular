@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, NavigationExtras, RouterLink} from '@angular/router';
-import { CommitServiceService} from "../commit-service.service";
-import {LoginToServerService} from "../login-to-server.service";
+import { CommitServiceService} from "../services/commit-service.service";
+import {LoginToServerService} from "../services/login-to-server.service";
 import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-tab4',

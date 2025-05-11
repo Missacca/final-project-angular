@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginToServerService} from "../../login-to-server.service";
+import {LoginToServerService} from "../../services/login-to-server.service";
 import {NavController} from "@ionic/angular";
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CommitServiceService} from "../commit-service.service";
-import {LoginToServerService} from "../login-to-server.service";
+import {CommitServiceService} from "../../services/commit-service.service";
+import {LoginToServerService} from "../../services/login-to-server.service";
 import {firstValueFrom} from "rxjs";
 @Component({
   selector: 'app-comment',

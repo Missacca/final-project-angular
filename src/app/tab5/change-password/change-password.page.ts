@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from "@ionic/angular";
-import {LoginToServerService} from "../../login-to-server.service";
+import {LoginToServerService} from "../../services/login-to-server.service";
 
 @Component({
   selector: 'app-change-password',

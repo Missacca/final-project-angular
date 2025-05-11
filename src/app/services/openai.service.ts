@@ -21,7 +21,7 @@ export class OpenaiService {
     const body = {
       model: "gemma-3-12b-it-Q4_K_M",
       messages: [
-        { "role": "user", "content": "You are an AI assistant, please answer all questions in English" },
+        { "role": "user", "content": "You are an AI assistant, please answer all questions in English，and you can only answer the questions relative to music or guitar" },
         { "role": "user", content: prompt }
       ],
       temperature: 0.7,

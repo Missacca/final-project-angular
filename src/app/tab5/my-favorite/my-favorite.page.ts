@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CommitServiceService} from "../../commit-service.service";
+import {CommitServiceService} from "../../services/commit-service.service";
 import {NavController} from "@ionic/angular";
 
 @Component({

@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'post',
-    loadChildren: () => import('./comment/comment.module').then( m => m.CommentPageModule)
+    loadChildren: () => import('./tab4/comment/comment.module').then(m => m.CommentPageModule)
   },
   {
     path: 'privacy',

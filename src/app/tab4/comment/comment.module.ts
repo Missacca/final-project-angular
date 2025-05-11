@@ -7,14 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { CommentPageRoutingModule } from './comment-routing.module';
 
 import { CommentPage } from './comment.page';
-import {ExploreContainerComponentModule} from "../explore-container/explore-container.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ExploreContainerComponentModule,
     CommentPageRoutingModule
   ],
   declarations: [CommentPage]

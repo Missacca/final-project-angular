@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OpenaiService} from "../openai.service";
+import { OpenaiService} from "../services/openai.service";
 
 @Component({
   selector: 'app-tab3',

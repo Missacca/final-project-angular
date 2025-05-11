@@ -1,0 +1,66 @@
+:host {
+  --background: #F1F8FF;
+  display: block;
+  height: 100%;
+  background: var(--background);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-box {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  padding: 32px 24px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #D8A7FF,
+  -10px -10px 20px #ffffff;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 24px;
+  color: #2A2A2A;
+}
+
+ion-item {
+  --background: #F9F9FF;
+  border-radius: 12px;
+  margin: 12px 0;
+  box-shadow: inset 6px 6px 12px #D8A7FF,
+  inset -6px -6px 12px #ffffff;
+}
+
+ion-input {
+  --background: transparent;
+  color: #2A2A2A;
+}
+
+.neu-button {
+  --background: #A9D6FF;
+  --box-shadow: 6px 6px 12px #D8A7FF, -6px -6px 12px #ffffff;
+  --border-radius: 12px;
+  margin-top: 24px;
+  font-weight: bold;
+  color: #2A2A2A;
+}
+
+.switch-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+
+  a {
+    color: #007ACC;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+}

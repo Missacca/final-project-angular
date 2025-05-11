@@ -1,22 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
 
-  <ion-card *ngIf="showLogin">
-    <ion-card-header>
-      <ion-card-title>Login</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <form (ngSubmit)="onLogin(loginData.email,loginData.password)">
+    <div class="form-box">
+      <h2>{{ showLogin ? 'Welcome Back' : 'Create Account' }}</h2>
+
+      <form *ngIf="showLogin" (ngSubmit)="onLogin(loginData.email, loginData.password)">
         <ion-item>
           <ion-label position="floating">Email</ion-label>
           <ion-input type="email" [(ngModel)]="loginData.email" name="email" required></ion-input>
@@ -27,20 +15,12 @@
           <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
         </ion-item>
 
-        <ion-button expand="full" type="submit" [disabled]="!loginData.email || !loginData.password">
+        <ion-button expand="block" type="submit" class="neu-button" [disabled]="!loginData.email || !loginData.password">
           Login
         </ion-button>
       </form>
-    </ion-card-content>
-  </ion-card>
 
-  <!-- Register Section -->
-  <ion-card *ngIf="!showLogin">
-    <ion-card-header>
-      <ion-card-title>Register</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <form (ngSubmit)="onRegister()">
+      <form *ngIf="!showLogin" (ngSubmit)="onRegister()">
         <ion-item>
           <ion-label position="floating">Name</ion-label>
           <ion-input type="text" [(ngModel)]="registerData.name" name="name" required></ion-input>
@@ -57,26 +37,23 @@
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">CheckPassword</ion-label>
-          <ion-input type="password" [(ngModel)]="registerData.rePassword" name="password" required></ion-input>
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input type="password" [(ngModel)]="registerData.rePassword" name="rePassword" required></ion-input>
         </ion-item>
 
-        <ion-button expand="full" type="submit" [disabled]="!registerData.name || !registerData.email || !registerData.password || !registerData.rePassword">
+        <ion-button expand="block" type="submit" class="neu-button"
+                    [disabled]="!registerData.name || !registerData.email || !registerData.password || !registerData.rePassword">
           Register
         </ion-button>
       </form>
-    </ion-card-content>
-  </ion-card>
 
-  <!-- Navigation to switch between login and register forms -->
-  <ion-item lines="none" *ngIf="!showLogin">
-    <ion-label>Already have an account?</ion-label>
-    <ion-button fill="clear" (click)="switchToLogin()">Login</ion-button>
-  </ion-item>
+      <div class="switch-link">
+        <p>
+          {{ showLogin ? "Don't have an account?" : "Already have an account?" }}
+          <a (click)="showLogin = !showLogin">{{ showLogin ? 'Register' : 'Login' }}</a>
+        </p>
+      </div>
+    </div>
 
-  <ion-item lines="none" *ngIf="showLogin">
-    <ion-label>Don't have an account?</ion-label>
-    <ion-button fill="clear" (click)="switchToRegister()">Register</ion-button>
-  </ion-item>
+  </div>
 </ion-content>
-
