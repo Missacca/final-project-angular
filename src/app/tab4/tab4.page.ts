@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationExtras, RouterLink} from '@angular/router';
 import { ChatService} from "../services/chat.service";
 import {UserdataService} from "../services/userdata.service";
@@ -9,25 +9,31 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['tab4.page.scss'],
   standalone: false,
 })
-export class Tab4Page  {
+export class Tab4Page implements OnInit {
+
   newPost: string = '';
   posts: any[] = [];
-  islike=false;
-  isFavorite=false;
   constructor(private authService: ChatService, public login: UserdataService, private navCtrl: NavController) {}
 
   ngOnInit() {
     this.authService.getPosts().subscribe((data: any) => {
       this.posts = data;
 
-      // 对每条评论请求点赞数量
-      this.posts.forEach((post, index) => {
+      this.posts.forEach(post => {
+        // 获取点赞数量
         this.authService.Alllikenumber(post.id).subscribe((likeData: any) => {
-          // 返回格式是一个对象数组：[{ likeCount: 5 }]
-          const count = likeData[0]?.likeCount || 0;
-          this.posts[index].likeCount = count;
-          console.log(count);
+          post.likeCount = likeData[0]["COUNT(*)"] || 0;
         });
+
+        this.authService.isPostLiked(post.id).subscribe((isLike: any) => {
+          if(isLike[0]["COUNT(*)"]>0) {post.isLike = true;}
+          else post.isLike = false;
+        })
+        this.authService.isPostFavor(post.id).subscribe((isFavorite: any) => {
+          if(isFavorite[0]["COUNT(*)"]>0) {
+            post.isFavorite = true;
+          }else  post.isFavorite = false;
+        })
       });
     });
   }
@@ -45,20 +51,14 @@ export class Tab4Page  {
 
   likePost(commentId: string) {
     this.authService.likePost(commentId).subscribe(() => {
-      this.islike=true;
-      this.authService.Alllikenumber(commentId).subscribe((likeData: any) => {
-        const updatedCount = likeData[0]?.likeCount || 0;
-        const post = this.posts.find(p => p.id === commentId);
-        if (post) {
-          post.likeCount = updatedCount;
-        }
-      });
+      this.posts[parseFloat(commentId)].islike=true;
+      this.ngOnInit();
     });
   }
 
   favoritePost(commentId: string) {
     this.authService.favoritePost(commentId).subscribe(() => {
-      this.isFavorite=true;
+      this.posts[parseFloat(commentId)].isFavorite=true;
       this.ngOnInit(); // Refresh post list
     });
   }
@@ -69,6 +69,5 @@ export class Tab4Page  {
       this.ngOnInit(); // Refresh post list
     });
   }
-
 
 }

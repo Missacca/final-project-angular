@@ -33,6 +33,7 @@ export class CommentPage implements OnInit {
         console.log('Detail 页没有接收到 id');
       }
     });
+
   }
 
   loadComments(postId: any) {

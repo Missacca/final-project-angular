@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
@@ -62,7 +63,8 @@ export class ChatService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get(this.url + `/api/posts/${postId}/like`, { headers });
+
+    return this.http.get(this.url + `/api/posts/${postId}/like`, { headers: { Authorization: `Bearer ${token}` } });
   }
 
   getAllPosts() {
@@ -78,5 +80,15 @@ export class ChatService {
       'Authorization': `Bearer ${token}`
     });
     return this.http.get(this.url+`/api/user/posts/favourite`, { headers });
+  }
+
+  isPostLiked(postId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get(this.url+`/api/posts/${postId}/liked`,  { headers: { Authorization: `Bearer ${token}` }})
+  }
+
+  isPostFavor(postId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get(`${this.url}/api/posts/${postId}/favourite`, { headers: { Authorization: `Bearer ${token}` }})
   }
 }

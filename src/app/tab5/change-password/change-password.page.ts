@@ -25,7 +25,7 @@ export class ChangePasswordPage implements OnInit {
     this.loading = await this.loadingCtrl.create({
       message,
       spinner: 'crescent',
-      duration: 0, // 无限时长，手动 dismiss
+      duration: 10,
     });
     await this.loading.present();
   }
