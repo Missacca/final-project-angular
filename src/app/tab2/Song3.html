@@ -1,17 +1,83 @@
 <h2 mat-dialog-title>Bingo</h2>
 <mat-dialog-content class="mat-typography">
-  <h3>C--------------F------C</h3>
-  <p>A - B - C - D - E - F - G</p>
-  <h3>F-----C-------G-------C</h3>
-  <p>H - I - J - K - LMNO - P</p>
-  <h3>C-----F-------C-------G</h3>
-  <p>Q - R - S - T - U - V</p>
-  <h3>C-----F-------C-------G</h3>
-  <p>W - X - Y and Z</p>
-  <h3>C--------F------------C</h3>
-  <p>Now I know my ABC's</p>
+  <!-- Line 1 -->
+  <div class="line">
+    <span class="word"><span class="chord">C</span>There</span>
+    <span class="word"><span class="chord">-</span>was</span>
+    <span class="word"><span class="chord">-</span>a</span>
+    <span class="word"><span class="chord">G</span>farmer</span>
+    <span class="word"><span class="chord">-</span>had</span>
+    <span class="word"><span class="chord">-</span>a</span>
+    <span class="word"><span class="chord">C</span>dog</span>
+  </div>
+
+  <!-- Line 2 -->
+  <div class="line">
+    <span class="word"><span class="chord">F</span>And</span>
+    <span class="word"><span class="chord">-</span>Bingo</span>
+    <span class="word"><span class="chord">-</span>was</span>
+    <span class="word"><span class="chord">-</span>his</span>
+    <span class="word"><span class="chord">C</span>name-O</span>
+  </div>
+
+  <!-- Line 3 -->
+  <div class="line">
+    <span class="word"><span class="chord">G</span>B</span>
+    <span class="word"><span class="chord">-</span>I</span>
+    <span class="word"><span class="chord">-</span>N</span>
+    <span class="word"><span class="chord">-</span>G</span>
+    <span class="word"><span class="chord">C</span>O</span>
+  </div>
+
+  <!-- Line 4 -->
+  <div class="line">
+    <span class="word"><span class="chord">G</span>B</span>
+    <span class="word"><span class="chord">-</span>I</span>
+    <span class="word"><span class="chord">-</span>N</span>
+    <span class="word"><span class="chord">-</span>G</span>
+    <span class="word"><span class="chord">C</span>O</span>
+  </div>
+
+  <!-- Line 5 -->
+  <div class="line">
+    <span class="word"><span class="chord">G</span>B</span>
+    <span class="word"><span class="chord">-</span>I</span>
+    <span class="word"><span class="chord">-</span>N</span>
+    <span class="word"><span class="chord">-</span>G</span>
+    <span class="word"><span class="chord">C</span>O</span>
+  </div>
+
+  <!-- Line 6 -->
+  <div class="line">
+    <span class="word"><span class="chord">F</span>And</span>
+    <span class="word"><span class="chord">-</span>Bingo</span>
+    <span class="word"><span class="chord">-</span>was</span>
+    <span class="word"><span class="chord">-</span>his</span>
+    <span class="word"><span class="chord">C</span>name-O</span>
+  </div>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 40px;
+  }
+  .line {
+    display: flex;
+    gap: 8px;
+  }
+  .word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+  }
+  .chord {
+    font-weight: bold;
+    color: #d6336c;
+  }
+</style>

@@ -8,29 +8,16 @@ export class UserdataService {
 
   constructor(private http: HttpClient) {}
 
-  url: string  = "http://frp-aim.com:56647";
-  onLogin(email:string,password:string) {
-    return this.http.post(this.url + '/api/login', { email, password })
-      .subscribe((response: any) => {
-        localStorage.setItem('token', response.token);
-        alert("login successfully, welcome to guitar world," + response.user.name);
-      },
-        (error: any) => {
-        console.error('Login Failed');
-        alert('Login Failed, Check your email and password');});
+  url: string  = "http://frp-fit.com:56647";
+  onLogin(email: string, password: string): Observable<any> {
+    return this.http.post(this.url + '/api/login', { email, password });
   }
+
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
-  onRegister(username: string, email: string, password: string) {
-    return this.http.post(this.url + '/api/register', { username, email, password })
-      .subscribe((response: any)=>{
-          alert("register successfully, welcome to guitar world," + username);
-        },
-        (error: any) => {
-          console.error('Register Failed');
-          alert('Register Failed');
-        });
+  onRegister(username: string, email: string, password: string): Observable<any> {
+    return this.http.post(this.url + '/api/register', { username, email, password });
   }
 
 
@@ -39,17 +26,14 @@ export class UserdataService {
   }
 
   getCurrentUser(): Observable<any> {
-    return this.http.get(this.url+ '/api/thisUserInfo');
+    const token = localStorage.getItem('token');
+    return this.http.get(this.url+ '/api/user/info', {headers: { Authorization: `Bearer ${token}` }});
   }
 
   updateUserInfo(password: string) {
-    return this.http.put(this.url + '/api/updateUserInfo', password)
-    .subscribe((response: any) => {
-      alert("updated successfully");
-    },
-      (error: any) => {
-        console.error('update Failed');
-        alert('update Failed');
-      })
+    const token = localStorage.getItem('token');
+    const body = { password };
+    return this.http.put(`${this.url}/api/user/changePassword`, body, {
+      headers: { Authorization: `Bearer ${token}` }})
   }
 }

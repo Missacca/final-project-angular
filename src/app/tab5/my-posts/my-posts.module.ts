@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MyStarPageRoutingModule } from './my-star-routing.module';
+import { MyStarPageRoutingModule } from './my-posts-routing.module';
 
-import { MyStarPage } from './my-star.page';
+import { MyPostsPage } from './my-posts.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { MyStarPage } from './my-star.page';
     IonicModule,
     MyStarPageRoutingModule
   ],
-  declarations: [MyStarPage]
+  declarations: [MyPostsPage]
 })
 export class MyStarPageModule {}

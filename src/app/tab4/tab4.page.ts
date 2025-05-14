@@ -26,6 +26,7 @@ export class Tab4Page  {
           // 返回格式是一个对象数组：[{ likeCount: 5 }]
           const count = likeData[0]?.likeCount || 0;
           this.posts[index].likeCount = count;
+          console.log(count);
         });
       });
     });

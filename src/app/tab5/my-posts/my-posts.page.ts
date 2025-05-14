@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import {ChatService} from "../../services/chat.service";
 
 @Component({
-  selector: 'app-my-star',
-  templateUrl: './my-star.page.html',
-  styleUrls: ['./my-star.page.scss'],
+  selector: 'app-my-posts',
+  templateUrl: './my-posts.page.html',
+  styleUrls: ['./my-posts.page.scss'],
   standalone: false
 })
-export class MyStarPage implements OnInit {
+export class MyPostsPage implements OnInit {
   posts: any[] = [];
   constructor(private server: ChatService) { }
 
   ngOnInit(): void {
-    this.server.getAllStar().subscribe((data: any) => {
+    this.server.getAllPosts().subscribe((data: any) => {
         this.posts = data;
+        console.log(data);
       }
     )
   }

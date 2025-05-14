@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ChatService {
 
-  url: string  = "http://frp-aim.com:56647";
+  url: string  = "http://frp-fit.com:56647";
   constructor(private http: HttpClient,) {}
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
@@ -58,21 +58,25 @@ export class ChatService {
   }
   //
   Alllikenumber(postId: string){
-    return this.http.get(this.url + `/api/getCommentLikes/${postId}`);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get(this.url + `/api/posts/${postId}/like`, { headers });
   }
 
-  getAllStar() {
-    const token = localStorage.getItem('token'); // 或者你存储的位置
+  getAllPosts() {
+    const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get(this.url+`/api/getAllStar`, { headers });
+    return this.http.get(this.url+`/api/user/posts`, { headers });
   }
   getAllFavorites() {
-    const token = localStorage.getItem('token'); // 或者你存储的位置
+    const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get(this.url+`/api/getAllFavorites`, { headers });
+    return this.http.get(this.url+`/api/user/posts/favourite`, { headers });
   }
 }

@@ -4,6 +4,7 @@
     <div class="form-box">
       <h2>{{ showLogin ? 'Welcome Back' : 'Create Account' }}</h2>
 
+
       <form *ngIf="showLogin" (ngSubmit)="onLogin(loginData.email, loginData.password)">
         <ion-item>
           <ion-label position="floating">Email</ion-label>
@@ -18,6 +19,7 @@
         <ion-button expand="block" type="submit" class="neu-button" [disabled]="!loginData.email || !loginData.password">
           Login
         </ion-button>
+
       </form>
 
       <form *ngIf="!showLogin" (ngSubmit)="onRegister()">
@@ -45,6 +47,7 @@
                     [disabled]="!registerData.name || !registerData.email || !registerData.password || !registerData.rePassword">
           Register
         </ion-button>
+
       </form>
 
       <div class="switch-link">

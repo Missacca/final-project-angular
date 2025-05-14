@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'MyStar',
-    loadChildren: () => import('./tab5/my-star/my-star.module').then( m => m.MyStarPageModule)
+    loadChildren: () => import('./tab5/my-posts/my-posts.module').then(m => m.MyStarPageModule)
   },
   {
     path: 'ContractUs',

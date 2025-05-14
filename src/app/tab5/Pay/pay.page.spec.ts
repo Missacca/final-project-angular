@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PayPage } from './pay.page';
 
-describe('ExamplePage', () => {
+describe('PayPage', () => {
   let component: PayPage;
   let fixture: ComponentFixture<PayPage>;
 

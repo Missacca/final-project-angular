@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>MyStar</ion-title>
+    <ion-title>My Comments</ion-title>
 
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab5" icon="chevron-back" text=""></ion-back-button>
@@ -11,7 +11,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">MyStar</ion-title>
+      <ion-title size="large">My Comments</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -27,6 +27,9 @@
     <ion-item *ngFor="let comment of posts">
       {{ comment.content }}
     </ion-item>
+    <ion-button onclick="Delete()">
+      Unlike it now
+    </ion-button>
   </ion-list>
 
 </ion-content>
