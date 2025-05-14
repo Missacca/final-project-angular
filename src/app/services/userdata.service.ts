@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginToServerService {
+export class UserdataService {
 
   constructor(private http: HttpClient) {}
 
@@ -42,10 +42,10 @@ export class LoginToServerService {
     return this.http.get(this.url+ '/api/thisUserInfo');
   }
 
-  updateUserInfo(username: string, email: string, password: string) {
-    return this.http.put(this.url + '/api/updateUserInfo', { username, email, password })
+  updateUserInfo(password: string) {
+    return this.http.put(this.url + '/api/updateUserInfo', password)
     .subscribe((response: any) => {
-      alert("updated successfully"+ username);
+      alert("updated successfully");
     },
       (error: any) => {
         console.error('update Failed');

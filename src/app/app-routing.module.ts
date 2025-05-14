@@ -33,6 +33,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./tab5/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'image',
+    loadChildren: () => import('./tab5/image/image.module').then( m => m.ImagePageModule)
+  },
+  {
+    path: 'Pay',
+    loadChildren: () => import('./tab5/Pay/pay').then(m => m.ExamplePageModule)
   }
 ];
 @NgModule({

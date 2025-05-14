@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CommitServiceService} from "../../services/commit-service.service";
-import {LoginToServerService} from "../../services/login-to-server.service";
+import {ChatService} from "../../services/chat.service";
+import {UserdataService} from "../../services/userdata.service";
 import {firstValueFrom} from "rxjs";
 @Component({
   selector: 'app-comment',
@@ -18,7 +18,7 @@ export class CommentPage implements OnInit {
   ilike=false;
   iFavorite=false;
 
-  constructor(private authService: CommitServiceService, public login: LoginToServerService,private route: ActivatedRoute, private router: Router) {}
+  constructor(private authService: ChatService, public login: UserdataService, private route: ActivatedRoute, private router: Router) {}
   ngOnInit() {
       this.route.queryParams.subscribe(params => {
       const currentNavigation = this.router.getCurrentNavigation();

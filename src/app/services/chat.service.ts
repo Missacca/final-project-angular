@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class CommitServiceService {
+export class ChatService {
 
   url: string  = "http://frp-aim.com:56647";
   constructor(private http: HttpClient,) {}

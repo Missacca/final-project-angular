@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController} from "@ionic/angular";
-import {LoginToServerService} from "../../services/login-to-server.service";
+import {UserdataService} from "../../services/userdata.service";
 
 @Component({
   selector: 'app-change-password',
@@ -16,13 +15,9 @@ export class ChangePasswordPage implements OnInit {
     confirmPassword: ''
   };
   constructor(
-    private loginToServerService: LoginToServerService,
-    private navCtrl: NavController
+    private loginToServerService: UserdataService,
   ) {}
 
-  navigateTo(path: string) {
-    this.navCtrl.navigateForward(`${path}`);
-  }
 
   async ngOnInit() {
     try {
@@ -35,20 +30,7 @@ export class ChangePasswordPage implements OnInit {
     }
   }
 
-  validateEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
   onSave() {
-    if (!this.userData.name.trim()) {
-      alert('Name cannot be empty.');
-      return;
-    }
-
-    if (!this.validateEmail(this.userData.email)) {
-      alert('Invalid email address.');
-      return;
-    }
 
     if (this.userData.password && this.userData.password.length < 6) {
       alert('Password must be at least 6 characters.');
@@ -60,6 +42,6 @@ export class ChangePasswordPage implements OnInit {
       return;
     }
 
-    this.loginToServerService.updateUserInfo(this.userData.name,this.userData.email,this.userData.password);
+    this.loginToServerService.updateUserInfo(this.userData.password);
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, NavigationExtras, RouterLink} from '@angular/router';
-import { CommitServiceService} from "../services/commit-service.service";
-import {LoginToServerService} from "../services/login-to-server.service";
+import { ChatService} from "../services/chat.service";
+import {UserdataService} from "../services/userdata.service";
 import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-tab4',
@@ -14,7 +14,7 @@ export class Tab4Page  {
   posts: any[] = [];
   islike=false;
   isFavorite=false;
-  constructor(private authService: CommitServiceService, public login: LoginToServerService,private navCtrl: NavController) {}
+  constructor(private authService: ChatService, public login: UserdataService, private navCtrl: NavController) {}
 
   ngOnInit() {
     this.authService.getPosts().subscribe((data: any) => {

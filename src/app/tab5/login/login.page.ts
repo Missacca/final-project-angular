@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginToServerService} from "../../services/login-to-server.service";
+import {UserdataService} from "../../services/userdata.service";
 import {NavController} from "@ionic/angular";
 
 @Component({
@@ -9,7 +9,7 @@ import {NavController} from "@ionic/angular";
   standalone: false
 })
 export class LoginPage {
-  constructor(private loginToServerService: LoginToServerService,private navCtrl: NavController ) { }
+  constructor(private loginToServerService: UserdataService, private navCtrl: NavController ) { }
   showLogin = true;
   loginData = {
     email: '',

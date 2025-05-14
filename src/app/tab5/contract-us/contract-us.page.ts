@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AnimationController, NavController} from "@ionic/angular";
+import {AnimationController} from "@ionic/angular";
 
 @Component({
   selector: 'app-contract-us',
@@ -8,11 +8,8 @@ import {AnimationController, NavController} from "@ionic/angular";
   standalone: false
 })
 export class ContractUsPage{
-  constructor(private animationCtrl: AnimationController,private navCtrl: NavController) {}
+  constructor(private animationCtrl: AnimationController) {}
 
-  navigateTo(path: string) {
-    this.navCtrl.navigateForward(`${path}`);
-  }
   /**
    * Handles pull-to-refresh logic.
    * Use this method to reload or refresh data.

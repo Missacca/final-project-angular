@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-privacy',
@@ -9,9 +8,6 @@ import {NavController} from "@ionic/angular";
 })
 export class PrivacyPage{
 
-  constructor(private navCtrl: NavController) {}
+  constructor() {}
 
-  navigateTo(path: string) {
-    this.navCtrl.navigateForward(`${path}`);
-  }
 }

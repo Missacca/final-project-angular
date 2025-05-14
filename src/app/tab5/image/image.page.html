@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>image</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab5" icon="chevron-back" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">image</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Sponsored Ads -->
+  <ion-card class="advertisement">
+    <ion-card-header>Sponsored Ads</ion-card-header>
+    <ion-card-content>
+      Here is the ad content.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Download Section -->
+  <div class="download-section">
+    <h1>Downloading the image</h1>
+    <ion-button expand="block" href="https://example.com/files/report.pdf" download="sample.pdf">
+      Click here to download
+    </ion-button>
+  </div>
+
+  <!-- Image Copy Example -->
+  <div class="welcome-section">
+    <h2>Here is an example of how to copy the image</h2>
+    <img src="assets/example.png" />
+  </div>
+</ion-content>
