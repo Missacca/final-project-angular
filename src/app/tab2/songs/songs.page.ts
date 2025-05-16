@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
+
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.page.html',
@@ -43,7 +44,7 @@ export class SongsPage implements OnInit {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-    this.http.get<any>(`http://frp-fit.com:56647/api/songs/${this.songId}`, { headers }).subscribe({
+    this.http.get<any>(`https://api.hf2e2bc54.nyat.app:56647/api/songs/${this.songId}`, { headers }).subscribe({
       next: (res) => {
         if (Array.isArray(res) && res.length > 0) {
           const song = res[0];
