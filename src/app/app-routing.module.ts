@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () => import('./tab5/my-favorite/my-favorite.module').then( m => m.MyFavoritePageModule)
   },
   {
-    path: 'MyStar',
+    path: 'MyPosts',
     loadChildren: () => import('./tab5/my-posts/my-posts.module').then(m => m.MyStarPageModule)
   },
   {
@@ -41,6 +41,10 @@ const routes: Routes = [
   {
     path: 'Pay',
     loadChildren: () => import('./tab5/Pay/pay').then(m => m.ExamplePageModule)
+  },
+  {
+    path: 'tab-songs/:id',
+    loadChildren: () => import('./tab2/songs/songs.module').then( m => m.SongsPageModule)
   }
 ];
 @NgModule({

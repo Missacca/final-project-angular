@@ -1,0 +1,78 @@
+.lyrics-line {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.chord-text {
+  margin-right: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.chord {
+  font-weight: bold;
+  display: block;
+  color: #3880ff;
+  font-size: 14px;
+}
+
+.lyrics-text {
+  display: block;
+  font-size: 16px;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  color: gray;
+}
+.lyrics-line {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.chord-text {
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 关键点：左对齐 */
+}
+
+.chord {
+  font-weight: bold;
+  color: #3880ff;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.lyrics-text {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  color: gray;
+}
+ion-header {
+  ion-toolbar {
+    --background: #3880ff;
+    --color: #fff;
+
+    ion-title {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+
+  &.condense ion-toolbar {
+    ion-title {
+      font-size: 1.6rem;
+    }
+  }
+}

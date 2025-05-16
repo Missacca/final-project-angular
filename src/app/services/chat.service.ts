@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
@@ -90,5 +89,27 @@ export class ChatService {
   isPostFavor(postId: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(`${this.url}/api/posts/${postId}/favourite`, { headers: { Authorization: `Bearer ${token}` }})
+  }
+
+  isCommentLiked(commentId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get(this.url+`/api/comments/${commentId}/liked`, { headers });
+  }
+  isCommentFavor(commentId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get(this.url+`/api/comments/${commentId}/favorite`, { headers });
+  }
+  AllCommentsNumber(commentId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get(this.url+`/api/comments/${commentId}/like`, { headers });
   }
 }

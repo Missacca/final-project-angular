@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Music Score</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2" icon="chevron-back" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="loading" class="loading">loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <ion-card *ngIf="!loading && !error">
+    <ion-card-header>
+      <ion-card-title>{{ title }} - {{ artist }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let line of songData" class="lyrics-line">
+        <div *ngFor="let item of line.line" class="chord-text">
+          <span class="chord">{{ item.chord }}</span>
+          <span class="lyrics-text">{{ item.text }}</span>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

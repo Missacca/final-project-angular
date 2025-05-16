@@ -36,4 +36,8 @@ export class UserdataService {
     return this.http.put(`${this.url}/api/user/changePassword`, body, {
       headers: { Authorization: `Bearer ${token}` }})
   }
+  DeletePost(postId: any) {
+    const token = localStorage.getItem('token');
+    return this.http.delete(`${this.url}/api/user/posts/favourite/${postId}`,{headers: { Authorization: `Bearer ${token}` }});
+  }
 }

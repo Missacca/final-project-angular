@@ -25,6 +25,10 @@
   <ion-list>
     <ion-item *ngFor="let comment of posts">
       {{ comment.content }}
+
+      <ion-button (click)="DeletePost(comment.id)">
+        Unlike it now
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

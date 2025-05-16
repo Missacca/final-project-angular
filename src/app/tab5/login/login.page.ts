@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import {UserdataService} from "../../services/userdata.service";
 import {LoadingController, NavController} from "@ionic/angular";
 

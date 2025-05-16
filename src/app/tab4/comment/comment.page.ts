@@ -15,8 +15,6 @@ export class CommentPage implements OnInit {
   receivedPostId='';
   receivedPostContent = '';
   receivedPostUsername='';
-  ilike=false;
-  iFavorite=false;
 
   constructor(private authService: ChatService, public login: UserdataService, private route: ActivatedRoute, private router: Router) {}
   ngOnInit() {
@@ -33,12 +31,28 @@ export class CommentPage implements OnInit {
         console.log('Detail 页没有接收到 id');
       }
     });
-
   }
 
   loadComments(postId: any) {
     this.authService.getComments(postId).subscribe((data: any) => {
       this.comments = data;
+
+      this.comments.forEach(post => {
+        // 获取点赞数量
+        this.authService.AllCommentsNumber(post.id).subscribe((likeData: any) => {
+          post.likeCount = likeData[0]["COUNT(*)"] || 0;
+        });
+
+        this.authService.isCommentLiked(post.id).subscribe((isLike: any) => {
+          if(isLike[0]["COUNT(*)"]>0) {post.isLike = true;}
+          else post.isLike = false;
+        })
+        this.authService.isCommentFavor(post.id).subscribe((isFavorite: any) => {
+          if(isFavorite[0]["COUNT(*)"]>0) {
+            post.isFavorite = true;
+          }else  post.isFavorite = false;
+        })
+      });
     });
   }
 
@@ -54,17 +68,17 @@ export class CommentPage implements OnInit {
 
   likeComment(commentId: string) {
     this.authService.likeComment(commentId).subscribe(() => {
-      this.ilike=true;
+      const comment = this.comments.find(c => c.id === commentId);
+      if (comment) comment.isLike = true;
     });
-    console.log("Favorite comment: " + commentId);
     this.loadComments(this.receivedPostId);
   }
 
   favoriteComment(commentId: string) {
-    this.authService.favoriteComment(this.receivedPostId).subscribe(() => {
-      console.log(`Favorite comments: ${commentId}`);
+    this.authService.favoriteComment(commentId).subscribe(() => {
+      const comment = this.comments.find(c => c.id === commentId);
+      if (comment) comment.isFavorite = true;
     });
-    console.log("Favorite comment: " + commentId);
     this.loadComments(this.receivedPostId);
   }
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationExtras, RouterLink} from '@angular/router';
+import { NavigationExtras} from '@angular/router';
 import { ChatService} from "../services/chat.service";
 import {UserdataService} from "../services/userdata.service";
 import { NavController } from '@ionic/angular';
@@ -16,6 +16,10 @@ export class Tab4Page implements OnInit {
   constructor(private authService: ChatService, public login: UserdataService, private navCtrl: NavController) {}
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.authService.getPosts().subscribe((data: any) => {
       this.posts = data;
 
@@ -37,7 +41,6 @@ export class Tab4Page implements OnInit {
       });
     });
   }
-
   goToDetailPage(commentId: string,commentContent:string,commentUsername:string) {
       let navigationExtras: NavigationExtras = {
         state: {
@@ -51,22 +54,22 @@ export class Tab4Page implements OnInit {
 
   likePost(commentId: string) {
     this.authService.likePost(commentId).subscribe(() => {
-      this.posts[parseFloat(commentId)].islike=true;
-      this.ngOnInit();
+      this.posts[parseFloat(commentId)].isLike=true;
+      this.refresh();
     });
   }
 
   favoritePost(commentId: string) {
     this.authService.favoritePost(commentId).subscribe(() => {
       this.posts[parseFloat(commentId)].isFavorite=true;
-      this.ngOnInit(); // Refresh post list
+      this.refresh(); // Refresh post list
     });
   }
 
   submitPost() {
     this.authService.createPost(this.newPost).subscribe(() => {
       this.newPost = ''; // Clear the input box
-      this.ngOnInit(); // Refresh post list
+      this.refresh(); // Refresh post list
     });
   }
 

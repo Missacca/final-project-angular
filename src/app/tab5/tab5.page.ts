@@ -1,5 +1,4 @@
 import { Component} from '@angular/core';
-import {UserdataService} from "../services/userdata.service";
 import {NavController} from "@ionic/angular";
 @Component({
   selector: 'app-tab5',
@@ -10,8 +9,8 @@ import {NavController} from "@ionic/angular";
 export class Tab5Page {
   constructor(private navCtrl: NavController) {}
   menuItems = [
-    { label: 'My Favorite', path: 'MyFavorite', icon: 'heart-outline' },
-    { label: 'My Star', path: 'MyStar', icon: 'star-outline' },
+    { label: 'My Favorite', path: 'MyFavorite', icon: 'star-outline' },
+    { label: 'My Posts', path: 'MyPosts', icon: 'radio-outline' },
     { label: 'Privacy', path: 'privacy', icon: 'lock-closed-outline' },
     { label: 'Contract Us', path: 'ContractUs', icon: 'mail-outline' },
     { label: 'change password', path: 'change-password', icon: 'key-outline' },

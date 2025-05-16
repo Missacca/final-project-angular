@@ -34,11 +34,13 @@
 
            {{comment.username}}: {{ comment.content }}
           </ion-label>
-          <ion-button size="small" slot="end" (click)="likeComment(comment.id)" [disabled]="ilike">
-            <ion-icon [name]="ilike ? 'heart-circle-outline' : 'heart'"></ion-icon>
+          <ion-button size="small" slot="end" (click)="likeComment(comment.id)" [disabled]="comment.isLike">
+            <ion-icon [name]="comment.isLike ?'heart-outline'  :'heart' "></ion-icon>
+
+            <ion-label>{{ comment.likeCount }}</ion-label>
           </ion-button>
-          <ion-button size="small" slot="end" (click)="favoriteComment(comment.id)" [disabled]="iFavorite">
-            <ion-icon [name]="iFavorite? 'star':'star-outline' "> Collect</ion-icon>
+          <ion-button size="small" slot="end" (click)="favoriteComment(comment.id)" [disabled]="comment.isFavorite">
+            <ion-icon [name]="comment.isFavorite? 'star':'star-outline' "> Collect</ion-icon>
           </ion-button>
         </ion-item>
       </ion-list>
