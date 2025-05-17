@@ -16,11 +16,9 @@ export class Tab3Page {
     if (this.inputText.trim() !== '') {
       this.openaiService.getResponseFromLM(this.inputText).subscribe(
         (response) => {
-          console.log('API 返回:', response);
           // 解析API返回的响应
-          this.aiResponse = response?.choices?.[0]?.message?.content || // OpenAI 格式
-            response?.data?.content ||                  // 你当前的格式
-            '未能获取有效的回答';
+          this.aiResponse = response.choices && response.choices[0]?.message?.content || '未能获取有效的回答';
+
           this.messages.push({ user: this.inputText, ai: this.aiResponse });
         },
         (error) => {

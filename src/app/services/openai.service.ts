@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OpenaiService {
-  private apiUrl = 'https://api.hf2e2bc54.nyat.app:56647/api/chat';
+  private apiUrl = 'http://frp-fit.com:56647/api/chat';
   token = localStorage.getItem('token');
   constructor(private http: HttpClient) {}
   private httpOptions = {
@@ -22,10 +22,11 @@ export class OpenaiService {
     const body = {
       model: "gpt-4o",
       messages: [
-        { "role": "user", content: prompt+"You can only answer the questions relative to music or guitar. And you answer should under 500 words." }
+        { "role": "user", "content": "You are an AI assistant, please answer all questions in English，and you can only answer the questions relative to music or guitar" },
+        { "role": "user", content: prompt }
       ],
-      //temperature: 0.7,
-      max_tokens: 500,
+      temperature: 0.7,
+      max_tokens: 100,
       stream: false
     };
 

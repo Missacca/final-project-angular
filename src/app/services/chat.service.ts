@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
 })
 export class ChatService {
 
-  url: string  = "https://api.hf2e2bc54.nyat.app:56647";
+  url: string  = "http://frp-fit.com:56647";
   constructor(private http: HttpClient,) {}
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
