@@ -22,10 +22,10 @@
   <!-- Song List -->
 
   <ion-content color="light">
-    <ion-list [inset]="true" *ngFor="let theme of this.SongName">
+    <ion-list [inset]="true" *ngFor="let song of this.songs">
       <ion-item>
-        <ion-label> {{ theme }} </ion-label>
-        <ion-button color="success" (click)="openView(theme.length)">View Details</ion-button>
+        <ion-label> {{ song.title }} - {{song.artist}}</ion-label>
+        <ion-button color="success" (click)="openView(song.id)">View Details</ion-button>
       </ion-item>
     </ion-list>
   </ion-content>
