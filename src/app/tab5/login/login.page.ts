@@ -101,10 +101,12 @@ export class LoginPage {
 
     this.loginToServerService.onRegister(this.registerData.name, this.registerData.email, this.registerData.password).subscribe({
       next: (res) => {
+        this.dismissLoading();
         alert("Register successful, welcome " + this.registerData.name);
         this.switchToLogin();
       },
       error: () => {
+        this.dismissLoading();
         alert("Register failed");
       },
       complete: () => {

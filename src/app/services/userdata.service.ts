@@ -8,7 +8,7 @@ export class UserdataService {
 
   constructor(private http: HttpClient) {}
 
-  url: string  = "http://frp-fit.com:56647";
+  url: string  = "https://api.hf2e2bc54.nyat.app:56647";
   onLogin(email: string, password: string): Observable<any> {
     return this.http.post(this.url + '/api/login', { email, password });
   }
