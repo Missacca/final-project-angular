@@ -1,13 +1,15 @@
-import { Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavController} from "@ionic/angular";
+import {UserdataService} from "../services/userdata.service";
 @Component({
   selector: 'app-tab5',
   templateUrl: 'tab5.page.html',
   styleUrls: ['tab5.page.scss'],
   standalone: false,
 })
-export class Tab5Page {
-  constructor(private navCtrl: NavController) {}
+export class Tab5Page implements OnInit {
+
+  constructor(private navCtrl: NavController,private userdata:UserdataService) {}
   menuItems = [
     { label: 'My Favorite', path: 'MyFavorite', icon: 'star-outline' },
     { label: 'My Posts', path: 'MyPosts', icon: 'radio-outline' },
@@ -19,8 +21,23 @@ export class Tab5Page {
     { label: 'Support Us', path: 'Pay', icon: 'eye-outline' }
   ];
 
+
   navigateTo(path: string) {
     this.navCtrl.navigateForward(`${path}`);
+  }
+  experience: string| number = '';
+
+  ngOnInit(): void {
+    this.userdata.getUserExperience().subscribe({
+      next: (data) => {
+        this.experience = (data as { experience: number }).experience; // Type assertion
+        console.log('Experience:', this.experience);
+        console.log('Data:', data);
+      },
+      error: (err) => {
+        console.error('Error:', err);
+      },
+    });
   }
 
 

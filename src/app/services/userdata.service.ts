@@ -40,4 +40,8 @@ export class UserdataService {
     const token = localStorage.getItem('token');
     return this.http.delete(`${this.url}/api/user/posts/favourite/${postId}`,{headers: { Authorization: `Bearer ${token}` }});
   }
+  getUserExperience(){
+    const token = localStorage.getItem('token');
+    return this.http.get(`${this.url}/api/user/info/experience`,{headers: { Authorization: `Bearer ${token}` }});
+  }
 }
